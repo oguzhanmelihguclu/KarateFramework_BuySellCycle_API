@@ -1,3 +1,4 @@
+@API
 Feature: As an administrator, I should be able to access holiday data via the API connection.
 
   Background:

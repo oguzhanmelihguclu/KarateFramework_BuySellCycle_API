@@ -1,4 +1,4 @@
-@smoke
+@API
 Feature: As an administrator, I should be able to access the detailed
   information of the holiday with the specified id number via the API connection.
 

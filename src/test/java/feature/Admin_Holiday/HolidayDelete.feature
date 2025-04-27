@@ -1,3 +1,4 @@
+@API
 Feature: As an administrator, I want to be able to delete
   the holiday information with the specified id number via the API connection.
 
@@ -20,7 +21,7 @@ Feature: As an administrator, I want to be able to delete
   should be verified that the status code is 202, the response message is 'holiday deleted successfully', and the deleted_Id
   in the response body matches the ID in the request body.
 
-    * def myRequestBody = { id : 192 }
+    * def myRequestBody = { id : 194 }
     When request myRequestBody
     And header Authorization = 'Bearer ' + token
     And method DELETE

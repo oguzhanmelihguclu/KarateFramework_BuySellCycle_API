@@ -1,3 +1,4 @@
+@API
 Feature: As an administrator, I want to be able to update the holiday
   information with the specified id number via the API connection.
 

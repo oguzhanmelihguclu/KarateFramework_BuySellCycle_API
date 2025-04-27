@@ -1,3 +1,4 @@
+@API
 Feature: As an administrator, I want to add a new holiday record via the API connection.
 
   Background:
