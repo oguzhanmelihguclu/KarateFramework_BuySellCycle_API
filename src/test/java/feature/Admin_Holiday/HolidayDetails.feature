@@ -33,14 +33,14 @@ Feature: As an administrator, I should be able to access the detailed
     And match response.holidayDetails[0].updated_at == '<updated_at>'
 
     Examples:
-      | id     | year | name  | type | date        | created_at                  | updated_at                  |
-      | 179    | 2024 | Noeli | 0    | 2024-01-01  | 2025-04-25T17:23:56.000000Z | 2025-04-25T17:26:38.000000Z |
+      | id  | year | name  | type | date       | created_at                  | updated_at                  |
+      | 179 | 2024 | Noeli | 0    | 2024-01-01 | 2025-04-25T17:23:56.000000Z | 2025-04-25T17:26:38.000000Z |
 
-    Scenario: When a GET request is sent to the /api/holidayDetails endpoint with valid authorization information and no data
-    (holiday id), it must be verified that the returned status code is 404 and the message information in the response body is
-    "holiday not found".
+  Scenario: When a GET request is sent to the /api/holidayDetails endpoint with valid authorization information and no data
+  (holiday id), it must be verified that the returned status code is 404 and the message information in the response body is
+  "holiday not found".
 
-      When method GET
-      Then status 404
-      And match response.message == 'holiday not found'
+    When method GET
+    Then status 404
+    And match response.message == 'holiday not found'
 
