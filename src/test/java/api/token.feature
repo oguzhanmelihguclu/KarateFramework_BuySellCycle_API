@@ -4,6 +4,7 @@ Feature: Generate token
     * url base_url
     * path 'api', 'login'
 
+  @smoke1
   Scenario Outline: Login and get token
     Given request { email: '<email>', password: '<password>' }
     When method post
