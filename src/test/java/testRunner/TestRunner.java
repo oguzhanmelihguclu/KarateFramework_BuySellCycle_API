@@ -9,7 +9,7 @@ public class TestRunner {
     // Sadece @smoke etiketi ile işaretlenmiş testleri çalıştırır
     @Test
     Karate testSmoke() {
-        return run("classpath:feature").tags("@smoke");
+        return run("classpath:feature").tags("@smoke1");
     }
 
     // Sadece @regression etiketi ile işaretlenmiş testleri çalıştırır
