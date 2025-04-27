@@ -15,23 +15,23 @@ Feature: As an administrator, I want to add a new holiday record via the API con
     And path 'api','holidayAdd'
     And header Authorization = 'Bearer ' + token
 
-    Scenario: When a POST request with valid authorization and holiday data (year, name, date) is sent to the /api/holidayAdd
-    endpoint, it should be verified that the status code is 201 and the response message is 'holiday added successfully'.
+  Scenario: When a POST request with valid authorization and holiday data (year, name, date) is sent to the /api/holidayAdd
+  endpoint, it should be verified that the status code is 201 and the response message is 'holiday added successfully'.
 
-      * def myRequestBody = read('classpath:data/HolidayAdd.json')
-      And request myRequestBody
-      When method POST
-      * print response
-      Then status 201
-      Then match response.message == 'holiday added successfully'
+    * def myRequestBody = read('classpath:data/HolidayAdd.json')
+    And request myRequestBody
+    When method POST
+    * print response
+    Then status 201
+    Then match response.message == 'holiday added successfully'
 
 
-      Scenario:
-        * def myRequestBody = read('classpath:data/HolidayAdd.json')
-        And request myRequestBody
-        When method POST
-        * print response
-        Then status 400
-        Then match response.message == 'dublicate holiday request'
+  Scenario:
+    * def myRequestBody = read('classpath:data/HolidayAdd.json')
+    And request myRequestBody
+    When method POST
+    * print response
+    Then status 400
+    Then match response.message == 'dublicate holiday request'
 
 

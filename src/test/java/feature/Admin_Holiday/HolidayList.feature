@@ -11,10 +11,9 @@ Feature: As an administrator, I should be able to access holiday data via the AP
     * def token = response.token
     * print 'Admin Token:', token
 
-@US007
-  Scenario Outline:When a GET request is sent to the /api/holidayList endpoint with valid authorization,
-  it should be verified that the status code is 200, the message is 'success', and the year and name of id(x)
-  in the response body are correct.
+  @US007
+  Scenario Outline: When a GET request is sent to the /api/holidayList endpoint with valid authorization,
+  it should be verified that the status code is 200, the message is 'success', and the year and name of id(x) in the response body are correct.
 
     Given url base_url
     And path 'api', 'holidayList'
@@ -30,14 +29,17 @@ Feature: As an administrator, I should be able to access holiday data via the AP
       | dataIndex | year | name   |
       | 0         | 2025 | Spring |
 
-
   Scenario: When a GET request with invalid authorization is sent to the /api/holidayList endpoint,
   it should be verified that the status code is 401 and the response message is 'Unauthenticated.'
-      # INVALID OLDUGU ICIN YAPILAMADI
+
+    # Geçersiz token ile test yapılıyor
+    * def invalid_token = 'invalid_token_value'
+
     Given url base_url
     And path 'api', 'holidayList'
-    And header Authorization = 'Bearer '+ token
+    And header Authorization = 'Bearer ' + invalid_token
     When method GET
     Then status 401
     * print response
-    And match response.message == 'Unauthenticated.'
+    Then match response.message == 'Unauthenticated'
+
