@@ -1,5 +1,5 @@
 @API
-Feature: Trying to log in using a customer token in a query that requires an admin token.
+Feature: Trying to log in using a customer token in a query that requires an admin token..
 
   Background:
     # Customer kullanıcısı için token alınır
