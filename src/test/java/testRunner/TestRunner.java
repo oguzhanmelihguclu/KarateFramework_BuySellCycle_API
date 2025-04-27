@@ -2,27 +2,31 @@ package testRunner;
 
 import com.intuit.karate.junit5.Karate;
 
+import static com.intuit.karate.junit5.Karate.*;
+
 public class TestRunner {
 
-    private static final String FEATURE_PATH = "classpath:feature";
-
-    @Karate.Test
+    // Sadece @smoke etiketi ile işaretlenmiş testleri çalıştırır
+    @Test
     Karate testSmoke() {
-        return Karate.run(FEATURE_PATH).tags("@API");
+        return run("classpath:feature").tags("@smoke1");
     }
 
-    @Karate.Test
+    // Sadece @regression etiketi ile işaretlenmiş testleri çalıştırır
+    @Test
     Karate testRegression() {
-        return Karate.run(FEATURE_PATH).tags("@regression");
+        return run("classpath:feature").tags("@regression");
     }
 
-    @Karate.Test
+    // @smoke etiketi olmayan testleri çalıştırır
+    @Test
     Karate testWithoutSmoke() {
-        return Karate.run(FEATURE_PATH).tags("~@smoke");
+        return run("classpath:feature").tags("~@smoke");
     }
 
-    @Karate.Test
+    // Tüm testleri çalıştırır
+    @Test
     Karate testAll() {
-        return Karate.run(FEATURE_PATH);
+        return run("classpath:feature");  // Burada tag kullanılmaz, tüm testler çalışır.
     }
 }
