@@ -8,7 +8,7 @@ public class TestRunner {
 
     @Karate.Test
     Karate testSmoke() {
-        return Karate.run(FEATURE_PATH).tags("@smoke");
+        return Karate.run(FEATURE_PATH).tags("@API");
     }
 
     @Karate.Test
