@@ -3,14 +3,8 @@ Feature: As an administrator, I should be able to access holiday data via the AP
 
   Background:
     # Admin kullanıcısı için token alınır
-    * def loginRequest = { email: 'admin.oguzhan@buysellcycle.com' , password: 'Bsc.0425' }
-    * url base_url
-    * path 'api', 'login'
-    Given request loginRequest
-    When method post
-    Then status 200
-    * def token = response.token
-    * print 'Admin Token:', token
+    * def myCaller = call read('classpath:callers/adminToken.feature')
+    * def token = myCaller.token
 
   @US007
   Scenario Outline: When a GET request is sent to the /api/holidayList endpoint with valid authorization,
@@ -34,11 +28,11 @@ Feature: As an administrator, I should be able to access holiday data via the AP
   it should be verified that the status code is 401 and the response message is 'Unauthenticated.'
 
     # Geçersiz token ile test yapılıyor
-    * def invalid_token = 'invalid_token_value'
+
 
     Given url base_url
     And path 'api', 'holidayList'
-    And header Authorization = 'Bearer ' + invalid_token
+    And header Authorization = 'Bearer '
     When method GET
     Then status 401
     * print response

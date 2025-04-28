@@ -2,14 +2,8 @@
 Feature: As an administrator, I want to add a new holiday record via the API connection.
 
   Background:
-    * def loginRequest = { email: 'admin.oguzhan@buysellcycle.com', password: 'Bsc.0425' }
-    * url base_url
-    * path 'api', 'login'
-    Given request loginRequest
-    When method post
-    Then status 200
-    * def token = response.token
-    * print 'Admin Token:', token
+    * def myCaller = call read('classpath:callers/adminToken.feature')
+    * def token = myCaller.token
 
     # burası ortak kullanılan 3 step
     Given url base_url

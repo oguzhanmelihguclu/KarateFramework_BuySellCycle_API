@@ -4,14 +4,8 @@ Feature: As an administrator, I want to be able to delete
 
   Background:
     # Admin kullanıcısı için token alınır
-    * def loginRequest = { email: 'admin.oguzhan@buysellcycle.com' , password: 'Bsc.0425' }
-    * url base_url
-    * path 'api', 'login'
-    Given request loginRequest
-    When method post
-    Then status 200
-    * def token = response.token
-    * print 'Admin Token:', token
+    * def myCaller = call read('classpath:callers/adminToken.feature')
+    * def token = myCaller.token
 
     # Bu 1 step tüm testlerde ortak kullanılıyor
     Given url base_url

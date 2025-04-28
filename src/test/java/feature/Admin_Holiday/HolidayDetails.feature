@@ -3,14 +3,8 @@ Feature: As an administrator, I should be able to access the detailed
   information of the holiday with the specified id number via the API connection.
 
   Background:
-    * def loginRequest = { email: 'admin.oguzhan@buysellcycle.com', password: 'Bsc.0425' }
-    * url base_url
-    * path 'api', 'login'
-    Given request loginRequest
-    When method post
-    Then status 200
-    * def token = response.token
-    * print 'Admin Token:', token
+    * def myCaller = call read('classpath:callers/adminToken.feature')
+    * def token = myCaller.token
 
     # burası ortak kullanılan 3 step
     Given url base_url
@@ -34,7 +28,7 @@ Feature: As an administrator, I should be able to access the detailed
 
     Examples:
       | id  | year | name  | type | date       | created_at                  | updated_at                  |
-      | 179 | 2024 | Noeli | 0    | 2024-01-01 | 2025-04-25T17:23:56.000000Z | 2025-04-25T17:26:38.000000Z |
+      | 179 | 2024 | Noel | 0    | 2024-01-51 | 2025-04-25T17:23:56.000000Z | 2025-04-27T14:22:50.000000Z |
 
   Scenario: When a GET request is sent to the /api/holidayDetails endpoint with valid authorization information and no data
   (holiday id), it must be verified that the returned status code is 404 and the message information in the response body is
