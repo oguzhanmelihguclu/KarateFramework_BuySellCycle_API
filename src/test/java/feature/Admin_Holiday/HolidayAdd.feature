@@ -8,6 +8,7 @@ Feature: As an administrator, I want to add a new holiday record via the API con
     # burası ortak kullanılan 3 step
     Given url base_url
     And path 'api','holidayAdd'
+    * header Accept = 'application/json'
     And header Authorization = 'Bearer ' + token
 
   Scenario: When a POST request with valid authorization and holiday data (year, name, date) is sent to the /api/holidayAdd

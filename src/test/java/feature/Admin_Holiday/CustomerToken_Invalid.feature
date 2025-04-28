@@ -11,6 +11,7 @@ Feature: Trying to log in using a customer token in a query that requires an adm
 
     Given url base_url
     And path 'api', 'holidayList'
+    * header Accept = 'application/json'
     And header Authorization = 'Bearer ' + token
     When method GET
     Then status 404
