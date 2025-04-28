@@ -15,6 +15,7 @@ Feature: As an administrator, I want to be able to update the holiday
   'holiday updated successfully', and the updated_Id in the response body matches the ID in the path parameter.
 
     When path 'api' , 'holidayUpdate' , '190'
+    * header Accept = 'application/json'
     And header Authorization = 'Bearer ' + token
     * def myRequestBody = read('classpath:data/HolidayUpdate.json')
     And request myRequestBody
@@ -30,6 +31,7 @@ Feature: As an administrator, I want to be able to update the holiday
   the returned status code is 400 and the message information in the response body is "duplicate holiday request".
 
     When path 'api' , 'holidayUpdate' , '190'
+    * header Accept = 'application/json'
     And header Authorization = 'Bearer ' + token
     * def myRequestBody = read('classpath:data/HolidayUpdate.json')
     And request myRequestBody

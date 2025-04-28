@@ -9,12 +9,13 @@ Feature: As an administrator, I should be able to access the detailed
     # burası ortak kullanılan 3 step
     Given url base_url
     And path 'api','holidayDetails'
-    And header Authorization = 'Bearer ' + token
+    * header Accept = 'application/json'
 
   Scenario Outline: Verify GET /api/holidayDetails returns correct data
 
     * def myRequestBody = read('classpath:data/HolidayDetails.json')
     And request myRequestBody
+    And header Authorization = 'Bearer ' + token
     When method GET
     Then status 200
     * print response
@@ -34,6 +35,7 @@ Feature: As an administrator, I should be able to access the detailed
   (holiday id), it must be verified that the returned status code is 404 and the message information in the response body is
   "holiday not found".
 
+    And header Authorization = 'Bearer ' + token
     When method GET
     Then status 404
     And match response.message == 'holiday not found'

@@ -6,12 +6,17 @@ Feature: As an administrator, I should be able to access holiday data via the AP
     * def myCaller = call read('classpath:callers/adminToken.feature')
     * def token = myCaller.token
 
+    # Ortak kullanılan stepler
+    Given url base_url
+    And path 'api', 'holidayList'
+    * header Accept = 'application/json'
+    * def invalid = 'sdasdasd'
+
+
   @US007
   Scenario Outline: When a GET request is sent to the /api/holidayList endpoint with valid authorization,
   it should be verified that the status code is 200, the message is 'success', and the year and name of id(x) in the response body are correct.
 
-    Given url base_url
-    And path 'api', 'holidayList'
     And header Authorization = 'Bearer ' + token
     When method GET
     Then status 200
@@ -29,12 +34,8 @@ Feature: As an administrator, I should be able to access holiday data via the AP
 
     # Geçersiz token ile test yapılıyor
 
-
-    Given url base_url
-    And path 'api', 'holidayList'
-    And header Authorization = 'Bearer '
+    And header Authorization = 'Bearer ' + invalid
     When method GET
     Then status 401
     * print response
-    Then match response.message == 'Unauthenticated'
-
+    Then match response.message == 'Unauthenticated.'
